@@ -5,7 +5,6 @@ RSpec.describe 'Массив в Ruby' do
 
   it_behaves_like 'Enumerable', Array
 
-
   context 'при обращении к квадратным скобкам' do
     let(:arr) { [1, 2, 3, 4, 5] }
 

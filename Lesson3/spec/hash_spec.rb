@@ -4,7 +4,6 @@ RSpec.describe 'Хэш в Ruby' do
   let(:empty_hash) { {} }
 
   it_behaves_like 'Enumerable', Hash
-  
 
   context 'при обращении к квадратным скобкам' do
     let(:hsh) { { first: :hello, second: :world } }
