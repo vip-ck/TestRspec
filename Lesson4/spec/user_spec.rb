@@ -1,5 +1,41 @@
 # frozen_string_literal: true
 
+def user_wrong_email
+  User.new(
+    email: 'неверный',
+    first_name: 'Тест',
+    last_name: 'Тестов',
+    middle_name: 'Тестович'
+  )
+end
+
+def user_wrong_first_name
+  User.new(
+    email: 'test@gmail.com',
+    first_name: 'wrong',
+    last_name: 'Тестов',
+    middle_name: 'Тестович'
+  )
+end
+
+def user_wrong_last_name
+  User.new(
+    email: 'test@gmail.com',
+    first_name: 'Тест',
+    last_name: 'wrong',
+    middle_name: 'Тестович'
+  )
+end
+
+def user_wrong_middle_name
+  User.new(
+    email: 'test@gmail.com',
+    first_name: 'Тест',
+    last_name: 'Тестов',
+    middle_name: 'wrong'
+  )
+end
+# rubocop:disable Metrics/BlockLength
 RSpec.describe User do
   let(:user) do
     described_class.new(
@@ -28,55 +64,22 @@ RSpec.describe User do
     end
   end
 
-  
-
   context 'с некоректными параметрами' do
-    def user_wrong_email
-      User.new(
-        email: 'неверный',
-        first_name: 'Тест',
-        last_name: 'Тестов',
-        middle_name: 'Тестович'
-      )
-    end
     it :email do
       expect { user_wrong_email }.to raise_error('Wrong email parameter')
     end
 
-    def user_wrong_first_name
-      User.new(
-        email: 'test@gmail.com',
-        first_name: 'wrong',
-        last_name: 'Тестов',
-        middle_name: 'Тестович'
-      )
-    end
     it :first_name do
       expect { user_wrong_first_name }.to raise_error('Wrong first_name parameter')
     end
 
-    def user_wrong_last_name
-      User.new(
-        email: 'test@gmail.com',
-        first_name: 'Тест',
-        last_name: 'wrong',
-        middle_name: 'Тестович'
-      )
-    end
     it :last_name do
       expect { user_wrong_last_name }.to raise_error('Wrong last_name parameter')
     end
 
-    def user_wrong_middle_name
-      User.new(
-        email: 'test@gmail.com',
-        first_name: 'Тест',
-        last_name: 'Тестов',
-        middle_name: 'wrong'
-      )
-    end
     it :middle_name do
       expect { user_wrong_middle_name }.to raise_error('Wrong middle_name parameter')
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
